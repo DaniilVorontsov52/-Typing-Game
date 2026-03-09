@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body class="bcol1">
+		<div class="cont">
+			<div class="box1">
+				<div class="box4">
+					<div>
+						<img src="/ASSETS/Logo (1).png" alt="" />
+					</div>
+					<div class="box10">
+						<img src="/ASSETS/Trophy Icon.png" alt="" />
+						<p>
+							Personal best: <span class="col5"></span
+							><span class="col5">WPM</span>
+						</p>
+					</div>
+				</div>
+				<div class="box5">
+					<div class="box8">
+						<div class="wpm">
+							<p>WPM:<span class="col5">0</span></p>
+						</div>
+						<div class="borb"><p>|</p></div>
+						<div class="acc">
+							<p>Accuracy:<span class="col8">100%</span></p>
+						</div>
+						<div class="borb"><p>|</p></div>
+						<div class="time">
+							<p>Time:<span class="col10">0:60</span></p>
+						</div>
+					</div>
+					<div class="box9">
+						<p>Difficulty:</p>
+						<button class="btn1">Easy</button>
+						<button class="btn1">Medium</button>
+						<button class="btn1">Hard</button>
+					</div>
+				</div>
+			</div>
+			<div class="box2">
+				<div class="box7 col5">
+					<div class="box6">
+						<dialog>
+							<button class="btn2">Start Typing Test</button>
+							<p>Or click the text and start typing</p>
+						</dialog>
+					</div>
+					<h1 class="bl">
+						chat chien pain lait eau sel sucre table chaise porte mur sol main
+						pied tete nez yeux bras jambe dos ami amie pere mere frere soeur
+						oncle tante jour nuit matin soir hier demain ici la oui non bien mal
+						vite lent haut bas gros petit beau laid vrai faux bon mauvais chaud
+						froid plein vide dur mou clair sombre neuf vieux je tu il elle nous
+						vous eux elles mon ton son notre votre leur ce cet cette ces un une
+						des le la les du au aux sur sous dans avec sans vers pour contre
+						chez entre avant apres pendant toujours souvent parfois jamais
+						encore deja trop peu beaucoup tout rien quelque ainsi alors donc
+						mais ou et car si quand comme pourquoi comment combien oublie trouve
+						pense aime marche court saute parle crie rit pleure mange boit dort
+						lit ecrit ouvre ferme tourne regarde ecoute attend prend pose donne
+						garde cherche montre pousse tire porte tombe leve baisse monte
+						descend arrive part reste vient voit sent touche essaie joue gagne
+						perd change ajoute retire coupe colle range lave seche plie ouvre
+						ferme
+					</h1>
+				</div>
+			</div>
+			<div class="box3">
+				<button class="btn3" id="redo">
+					Restart Test
+					<div id="redo1" class="none">
+						<img src="/ASSETS/Undo Icon (1).png" alt="" />
+					</div>
+					<div id="redo2" class="">
+						<img src="/ASSETS/Undo Icon.png" alt="" />
+					</div>
+				</button>
+			</div>
+		</div>
+		<div class="cont2">
+			<div class="box01">
+				<img src="/ASSETS/Check circle.svg" alt="" />
+			</div>
+			<div class="box02">
+				<h1 class="col5 sp">Test Complete!</h1>
+				<p class="sp">Solid run. Keep pushing to beat your high score.</p>
+			</div>
+			<div class="space2"></div>
+			<div class="box03">
+				<div class="boox">
+					<p>
+						WPM:
+						<span class="col5">0</span>
+					</p>
+				</div>
+				<div class="space1"></div>
+				<div class="boox">
+					<p>Accuracy: <span class="col8">0%</span></p>
+				</div>
+				<div class="space1"></div>
+				<div class="boox">
+					<p>
+						Characters: <span class="col9">0</span>/<span class="col8">0</span>
+					</p>
+				</div>
+			</div>
+			<div class="space2"></div>
+			<div class="box04">
+				<button class="btn3">
+					Restart Test <img src="/ASSETS/Undo Icon (1).png" alt="" />
+					<img src="/ASSETS/Undo Icon.png" alt="" />
+				</button>
+			</div>
+		</div>
+
+		<script>
+			const $redo = document.querySelector("#redo");
+					const $redo1 = document.querySelector("#redo1");
+					const $redo2 = document.querySelector("#redo2");
+
+					$redo.addEventListener("click", () => {
+
+						$redo1.classList.remove("none");
+
+						$redo2.classList.add("none");
+					}
+		</script>
+	</body>
+</html>
