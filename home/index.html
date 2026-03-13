@@ -246,14 +246,32 @@
 			dif1.addEventListener("click", () => {
 				resetTest();
 				buildText(WORDS.easy);
+				dif1.classList.remove("btn1");
+				dif1.classList.add("btn15");
+				dif2.classList.remove("btn15");
+				dif2.classList.add("btn1");
+				dif3.classList.remove("btn15");
+				dif3.classList.add("btn1");
 			});
 			dif2.addEventListener("click", () => {
 				resetTest();
 				buildText(WORDS.medium);
+				dif2.classList.remove("btn1");
+				dif2.classList.add("btn15");
+				dif1.classList.remove("btn15");
+				dif1.classList.add("btn1");
+				dif3.classList.remove("btn15");
+				dif3.classList.add("btn1");
 			});
 			dif3.addEventListener("click", () => {
 				resetTest();
 				buildText(WORDS.hard);
+				dif3.classList.remove("btn1");
+				dif3.classList.add("btn15");
+				dif2.classList.remove("btn15");
+				dif2.classList.add("btn1");
+				dif1.classList.remove("btn15");
+				dif1.classList.add("btn1");
 			});
 			redoBtn.addEventListener("click", resetTest);
 			document.getElementById("redo").addEventListener("click", function () {
