@@ -6,7 +6,6 @@
 		<title></title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="" />
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body class="bcol1">
@@ -19,120 +18,261 @@
 					<div class="box10">
 						<img src="/ASSETS/Trophy Icon.png" alt="" />
 						<p>
-							Personal best: <span class="col5"></span
-							><span class="col5">WPM</span>
+							Personal best:
+							<span class="col5" id="personalBest">—</span>
+							<span class="col5">WPM</span>
 						</p>
 					</div>
 				</div>
 				<div class="box5">
 					<div class="box8">
 						<div class="wpm">
-							<p>WPM:<span class="col5">0</span></p>
+							<p>WPM:<span class="col5" id="currentWpm">0</span></p>
 						</div>
 						<div class="borb"><p>|</p></div>
 						<div class="acc">
-							<p>Accuracy:<span class="col8">100%</span></p>
+							<p>Accuracy:<span class="col8" id="currentAcc">100%</span></p>
 						</div>
 						<div class="borb"><p>|</p></div>
 						<div class="time">
-							<p>Time:<span class="col10">0:60</span></p>
+							<p>Time:<span class="col10" id="timer">01:00</span></p>
 						</div>
 					</div>
 					<div class="box9">
 						<p>Difficulty:</p>
-						<button class="btn1">Easy</button>
-						<button class="btn1">Medium</button>
-						<button class="btn1">Hard</button>
+						<button class="btn1" id="dif1">Easy</button>
+						<button class="btn1" id="dif2">Medium</button>
+						<button class="btn1" id="dif3">Hard</button>
 					</div>
 				</div>
 			</div>
 			<div class="box2">
 				<div class="box7 col5">
 					<div class="box6">
-						<dialog>
-							<button class="btn2">Start Typing Test</button>
-							<p>Or click the text and start typing</p>
+						<dialog class="dio" id="dialog" open>
+							<button class="btn2" id="startBtn">Start Typing Test</button>
+							<p id="pppppp">Or click the text and start typing</p>
 						</dialog>
 					</div>
-					<h1 class="bl">
-						chat chien pain lait eau sel sucre table chaise porte mur sol main
-						pied tete nez yeux bras jambe dos ami amie pere mere frere soeur
-						oncle tante jour nuit matin soir hier demain ici la oui non bien mal
-						vite lent haut bas gros petit beau laid vrai faux bon mauvais chaud
-						froid plein vide dur mou clair sombre neuf vieux je tu il elle nous
-						vous eux elles mon ton son notre votre leur ce cet cette ces un une
-						des le la les du au aux sur sous dans avec sans vers pour contre
-						chez entre avant apres pendant toujours souvent parfois jamais
-						encore deja trop peu beaucoup tout rien quelque ainsi alors donc
-						mais ou et car si quand comme pourquoi comment combien oublie trouve
-						pense aime marche court saute parle crie rit pleure mange boit dort
-						lit ecrit ouvre ferme tourne regarde ecoute attend prend pose donne
-						garde cherche montre pousse tire porte tombe leve baisse monte
-						descend arrive part reste vient voit sent touche essaie joue gagne
-						perd change ajoute retire coupe colle range lave seche plie ouvre
-						ferme
-					</h1>
+					<h1 class="bl" id="text"></h1>
+					<input
+						id="typingInput"
+						type="text"
+						autocomplete="off"
+						autocorrect="off"
+						spellcheck="false"
+					/>
 				</div>
 			</div>
 			<div class="box3">
-				<button class="btn3" id="redo">
-					Restart Test
-					<div id="redo1" class="none">
-						<img src="/ASSETS/Undo Icon (1).png" alt="" />
-					</div>
-					<div id="redo2" class="">
-						<img src="/ASSETS/Undo Icon.png" alt="" />
+				<button class="btn3 ttt" id="redo">
+					<div class="img">
+						<p>Restart Test</p>
+						<div id="redo2">
+							<img src="/ASSETS/Undo Icon.png" alt="" />
+						</div>
 					</div>
 				</button>
 			</div>
 		</div>
-		<div class="cont2">
-			<div class="box01">
-				<img src="/ASSETS/Check circle.svg" alt="" />
-			</div>
-			<div class="box02">
-				<h1 class="col5 sp">Test Complete!</h1>
-				<p class="sp">Solid run. Keep pushing to beat your high score.</p>
-			</div>
-			<div class="space2"></div>
-			<div class="box03">
-				<div class="boox">
-					<p>
-						WPM:
-						<span class="col5">0</span>
-					</p>
-				</div>
-				<div class="space1"></div>
-				<div class="boox">
-					<p>Accuracy: <span class="col8">0%</span></p>
-				</div>
-				<div class="space1"></div>
-				<div class="boox">
-					<p>
-						Characters: <span class="col9">0</span>/<span class="col8">0</span>
-					</p>
-				</div>
-			</div>
-			<div class="space2"></div>
-			<div class="box04">
-				<button class="btn3">
-					Restart Test <img src="/ASSETS/Undo Icon (1).png" alt="" />
-					<img src="/ASSETS/Undo Icon.png" alt="" />
-				</button>
-			</div>
-		</div>
-
 		<script>
-			const $redo = document.querySelector("#redo");
-					const $redo1 = document.querySelector("#redo1");
-					const $redo2 = document.querySelector("#redo2");
-
-					$redo.addEventListener("click", () => {
-
-						$redo1.classList.remove("none");
-
-						$redo2.classList.add("none");
+			const WORDS = {
+				easy: "chat chien pain lait eau sel sucre table chaise porte mur sol main pied tete nez yeux bras jambe dos ami amie pere mere frere soeur oncle tante jour nuit matin soir hier demain ici la oui non bien mal vite lent haut bas gros petit beau laid vrai faux bon mauvais chaud froid plein vide dur mou clair sombre neuf vieux je tu il elle nous vous eux elles mon ton son notre votre leur ce cet cette ces un une des le la les du au aux sur sous dans avec sans vers pour contre chez entre avant apres pendant toujours souvent parfois jamais encore deja trop peu beaucoup tout rien quelque ainsi alors donc mais ou et car si quand comme pourquoi comment combien oublie trouve pense aime marche court saute parle crie rit pleure mange boit dort lit ecrit ouvre ferme tourne regarde ecoute attend prend pose donne garde cherche montre pousse tire porte tombe leve baisse monte descend arrive part reste vient voit sent touche essaie joue gagne perd change ajoute retire coupe colle range lave seche plie ouvre ferme",
+				medium:
+					"maison voiture ordinateur clavier ecran telephone fenetre cuisine salon chambre bureau travail ecole college universite professeur eleve etudiant exercice question reponse solution probleme histoire geographie science nature animal plante montagne riviere ocean foret prairie desert nuage pluie orage vent soleil etoile planete galaxie univers energie force vitesse distance volume surface temperature pression matiere atome molecule reaction experience analyse mesure calcul nombre valeur resultat fonction variable tableau liste donnee fichier dossier reseau internet serveur logiciel programme developpeur application navigation connexion securite identifiant motdepasse interface utilisateur parametre configuration installation miseajour version prototype conception architecture structure organisation strategie gestion projet planning objectif priorite qualite performance amelioration optimisation creation invention decouverte innovation imagination inspiration motivation concentration attention memoire reflexion decision evaluation comparaison observation description explication interpretation communication discussion conversation argument opinion information connaissance apprentissage formation education enseignement lecture ecriture redaction traduction prononciation grammaire orthographe vocabulaire expression langage discours presentation conference reunion collaboration partenariat negociation transaction commerce entreprise industrie production distribution livraison transport logistique itineraire destination voyage tourisme aventure exploration experience souvenir emotion sensation impression reaction adaptation transformation evolution progression developpement croissance",
+				hard: "administration organisationnel responsabilite professionnel developpement implementation international communication interpretation collaboration coordination experimentale documentation classification transformation optimisation configuration synchronisation visualisation representation identification authentification autorisation infrastructure architecture algorithmique programmation compilation interoperabilite compatibilite virtualisation containerisation automatisation orchestration distribution sauvegarde restauration supervision monitoring performance scalabilite resilience tolerance redondance migration integration deploiement production validation verification evaluation amelioration innovation technologique scientifique experimentateur interpretatif comparatif demonstration illustration argumentation problematique hypothese methodologie statistique probabilite modelisation simulation analyseur predictif correlation causalite observationnel phenomenologie neuroscience biologie genetique physiologie biochimie metabolisme photosynthese biodiversite ecosysteme environnemental climatique geologique tectonique sismologie astronomie astrophysique cosmologie gravitation relativite quantification electromagnetisme thermodynamique cristallisation polymerisation nanotechnologie cybersecurite cryptographie authentificateur certification normalisation standardisation industrialisation commercialisation internationalisation regionalisation urbanisation modernisation numerisation digitalisation interconnexion interdependance globalisation diversification specialisation professionnalisation responsabilisation conscientisation sensibilisation contextualisation conceptualisation operationalisation institutionnalisation legislation reglementation administratif bureaucratique juridictionnel constitutionnel parlementaire gouvernemental diplomatique geopolitique democratique participatif consultatif deliberation negociation arbitrage conciliation mediation resolution interpretation argumentatif persuasion rhetorique philosophique epistemologie metaphysique ontologie ethique dialectique hermeneutique existentialisme structuralisme postmodernisme interdisciplinarite transdisciplinarite multidimensionnel",
+			};
+			const textEl = document.getElementById("text");
+			const inputEl = document.getElementById("typingInput");
+			const startBtn = document.getElementById("startBtn");
+			const dialogEl = document.getElementById("dialog");
+			const timerEl = document.getElementById("timer");
+			const wpmDisplay = document.getElementById("currentWpm");
+			const accDisplay = document.getElementById("currentAcc");
+			const personalBest = document.getElementById("personalBest");
+			const redoBtn = document.getElementById("redo");
+			const dif1 = document.getElementById("dif1");
+			const dif2 = document.getElementById("dif2");
+			const dif3 = document.getElementById("dif3");
+			const DURATION = 60;
+			let spans = [];
+			let startTime = null;
+			let isTestActive = false;
+			let timerInterval = null;
+			let timeLeft = DURATION;
+			let bestWpm = parseInt(localStorage.getItem("typingBestWpm")) || 0;
+			let testResults = {
+				wpm: 0,
+				accuracy: 100,
+				correctChars: 0,
+				wrongChars: 0,
+				correctWordsApprox: 0,
+				testFinished: false,
+				timestamp: null,
+			};
+			personalBest.textContent = bestWpm > 0 ? bestWpm : "—";
+			function buildText(words) {
+				textEl.innerHTML = "";
+				words.split("").forEach((ch) => {
+					const s = document.createElement("span");
+					s.textContent = ch;
+					textEl.appendChild(s);
+				});
+				spans = Array.from(textEl.querySelectorAll("span"));
+			}
+			buildText(WORDS.easy);
+			function startTest() {
+				if (isTestActive) return;
+				if (dialogEl.open) dialogEl.close();
+				textEl.classList.remove("bl");
+				timeLeft = DURATION;
+				timerEl.textContent = "01:00";
+				wpmDisplay.textContent = "0";
+				accDisplay.textContent = "100%";
+				inputEl.value = "";
+				spans.forEach((s) => s.classList.remove("correct", "wrong"));
+				isTestActive = true;
+				startTime = new Date();
+				timerInterval = setInterval(() => {
+					timeLeft--;
+					const m = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+					const s = String(timeLeft % 60).padStart(2, "0");
+					timerEl.textContent = `${m}:${s}`;
+					if (timeLeft <= 0) endTest();
+				}, 1000);
+				inputEl.focus();
+			}
+			function endTest() {
+				if (!isTestActive) return;
+				clearInterval(timerInterval);
+				isTestActive = false;
+				finalizeResults();
+				saveResultsAndRedirect();
+			}
+			function finalizeResults() {
+				const typed = inputEl.value;
+				let correct = 0,
+					wrong = 0;
+				for (let i = 0; i < typed.length; i++) {
+					if (i < spans.length && typed[i] === spans[i].textContent) correct++;
+					else wrong++;
+				}
+				const total = typed.length;
+				const accuracy = total > 0 ? Math.round((correct / total) * 100) : 100;
+				const elapsed = startTime ? (new Date() - startTime) / 1000 / 60 : 1;
+				const wpm = elapsed > 0 ? Math.round(correct / 5 / elapsed) : 0;
+				testResults = {
+					wpm,
+					accuracy,
+					correctChars: correct,
+					wrongChars: wrong,
+					correctWordsApprox: Math.round(correct / 5),
+					testFinished: true,
+					timestamp: new Date().toISOString(),
+				};
+				wpmDisplay.textContent = wpm;
+				accDisplay.textContent = accuracy + "%";
+			}
+			function saveResultsAndRedirect() {
+				localStorage.setItem(
+					"lastTypingTestResults",
+					JSON.stringify(testResults),
+				);
+				const isNewRecord = testResults.wpm > bestWpm;
+				if (isNewRecord) {
+					bestWpm = testResults.wpm;
+					localStorage.setItem("typingBestWpm", bestWpm);
+					personalBest.textContent = bestWpm;
+				}
+				window.location.href = isNewRecord
+					? "/first/first.html"
+					: "/result/RESULTAT.html";
+			}
+			function resetTest() {
+				clearInterval(timerInterval);
+				isTestActive = false;
+				startTime = null;
+				timeLeft = DURATION;
+				timerEl.textContent = "01:00";
+				wpmDisplay.textContent = "0";
+				accDisplay.textContent = "100%";
+				inputEl.value = "";
+				spans.forEach((s) => s.classList.remove("correct", "wrong"));
+				testResults = {
+					wpm: 0,
+					accuracy: 100,
+					correctChars: 0,
+					wrongChars: 0,
+					correctWordsApprox: 0,
+					testFinished: false,
+					timestamp: null,
+				};
+			}
+			inputEl.addEventListener("input", () => {
+				if (!isTestActive) {
+					startTest();
+					return;
+				}
+				const typed = inputEl.value.split("");
+				let correct = 0,
+					wrong = 0;
+				spans.forEach((span, i) => {
+					const ch = typed[i];
+					if (ch == null) {
+						span.classList.remove("correct", "wrong");
+					} else if (ch === span.textContent) {
+						span.classList.add("correct");
+						span.classList.remove("wrong");
+						correct++;
+					} else {
+						span.classList.add("wrong");
+						span.classList.remove("correct");
+						wrong++;
 					}
+				});
+				const total = typed.length;
+				const accuracy = total > 0 ? Math.round((correct / total) * 100) : 100;
+				accDisplay.textContent = accuracy + "%";
+				const elapsed = (new Date() - startTime) / 1000 / 60;
+				const wpm = elapsed > 0 ? Math.round(correct / 5 / elapsed) : 0;
+				wpmDisplay.textContent = wpm;
+				testResults.correctChars = correct;
+				testResults.wrongChars = wrong;
+				testResults.accuracy = accuracy;
+				testResults.wpm = wpm;
+				testResults.correctWordsApprox = Math.round(correct / 5);
+				if (typed.length >= spans.length) endTest();
+			});
+			dif1.addEventListener("click", () => {
+				resetTest();
+				buildText(WORDS.easy);
+			});
+			dif2.addEventListener("click", () => {
+				resetTest();
+				buildText(WORDS.medium);
+			});
+			dif3.addEventListener("click", () => {
+				resetTest();
+				buildText(WORDS.hard);
+			});
+			redoBtn.addEventListener("click", resetTest);
+			document.getElementById("redo").addEventListener("click", function () {
+				window.location.href = "/home/index.html";
+			});
+			startBtn.addEventListener("click", startTest);
+			textEl.addEventListener("click", startTest);
+			function loadResults() {
+				const raw = localStorage.getItem("lastTypingTestResults");
+				if (!raw) return;
+				const data = JSON.parse(raw);
+				document.getElementById("wpm").textContent = data.wpm ?? 0;
+				document.getElementById("accuracy").textContent =
+					(data.accuracy ?? 0) + "%";
+				document.getElementById("correct").textContent = data.correctChars ?? 0;
+				document.getElementById("wrong").textContent = data.wrongChars ?? 0;
+			}
+
+			loadResults();
 		</script>
 	</body>
 </html>

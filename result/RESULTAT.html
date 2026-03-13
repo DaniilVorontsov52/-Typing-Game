@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="" />
+		<link rel="stylesheet" href="resul.css" />
+	</head>
+	<body class="bcol1">
+		<div class="space3"></div>
+		<div class="cont2">
+			<div class="cont11">
+				<img src="/ASSETS/shape-7.png" alt="" />
+			</div>
+			<div class="cont22">
+				<div class="box01">
+					<img src="/ASSETS/Check circle.svg" alt="" />
+				</div>
+				<div class="space2"></div>
+				<div class="box02">
+					<h1 class="col5 sp">Test Complete!</h1>
+					<p class="sp">Solid run. Keep pushing to beat your high score.</p>
+				</div>
+				<div class="space2"></div>
+				<div class="box03">
+					<div class="boox">
+						<p>WPM: <span class="col5" id="wpm">0</span></p>
+					</div>
+					<div class="space1"></div>
+					<div class="boox">
+						<p>Accuracy: <span class="col8" id="accuracy">0%</span></p>
+					</div>
+					<div class="space1"></div>
+					<div class="boox">
+						<p>
+							Characters:
+							<span class="col9" id="correct">0</span>/<span
+								class="col8"
+								id="wrong"
+								>0</span
+							>
+						</p>
+					</div>
+				</div>
+				<div class="space2"></div>
+				<div class="box04">
+					<button class="btn3 ttt" id="redo">
+						<div class="img">
+							<p>Restart Test</p>
+							<div id="redo2" class="">
+								<img src="/ASSETS/Undo Icon.png" alt="" />
+							</div>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div class="cont33">
+				<img src="/ASSETS/shape-59.png" alt="" />
+			</div>
+		</div>
+		<script>
+			function loadResults() {
+				const raw = localStorage.getItem("lastTypingTestResults");
+				if (!raw) return;
+				const data = JSON.parse(raw);
+				document.getElementById("wpm").textContent = data.wpm ?? 0;
+				document.getElementById("accuracy").textContent =
+					(data.accuracy ?? 0) + "%";
+				document.getElementById("correct").textContent = data.correctChars ?? 0;
+				document.getElementById("wrong").textContent = data.wrongChars ?? 0;
+			}
+			document.getElementById("redo").addEventListener("click", function () {
+				window.location.href = "/home/index.html";
+			});
+			loadResults();
+		</script>
+	</body>
+</html>
